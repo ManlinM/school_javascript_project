@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Found Listings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body class="ms-5 mt-2">
+
+    <form action="/">
+        <p>
+            <%=message %>
+        </p>
+        <button type="submit">Home</button>
+        <% if(listing.length===0){ %>
+            <div class="border p-5 mt-5 bg-light col-6">
+                <h4>No Records Found</h4>
+            </div>
+            <% } %>
+                <% for (let i=0; i < listing.length;i++){%>
+                    <div class="border p-5 mt-5 bg-light col-6">
+
+                        <h4>
+                            <a href="/place/<%=listing[i].id %> ">
+                                <%=listing[i].name %>
+                            </a>
+                        </h4>
+                        <p>
+                            <%=listing[i].first_name %>, <%=listing[i].last_name %>
+                        </p>
+                        <p>
+                            <%=listing[i].max_guest %> guests, <%=listing[i].number_bathrooms %> baths
+                                    @ $<%=listing[i].price_by_night %> CAD /night
+                        </p>
+                    </div>
+                    <% } %>
+    </form>
+
+</body>
+
+</html>
